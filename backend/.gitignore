@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+logs
+*.log
+
+.env
+.venv
+env/
+venv/
+ENV/
+
+instance/
+.webassets-cache
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
