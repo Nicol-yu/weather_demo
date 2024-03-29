@@ -52,15 +52,13 @@ def init_after_req_hook(app: Flask) -> None:
         """handle exceptions globally and return friendly message"""
         if isinstance(e, ThirdPartyServiceErr):
             g.logger.error(traceback.format_exc())
-            # message = 'Service temporarily unavailable, please contact the system administrator, error code: {}'.format(e.code)
-            message = e.description
+            message = 'Service temporarily unavailable, please contact the system administrator, error code: {}'.format(e.code)
             status_code = ServiceUnavailable.code
         elif isinstance(e, ParameterErr):
             message = e.description
             status_code = BadRequest.code
         elif isinstance(e, BadRequest):
-            # message = 'friendly message for 400'
-            message = e.description
+            message = 'friendly message for 400'
             status_code = BadRequest.code
         elif isinstance(e, Forbidden):
             message = 'friendly message for 403'
@@ -79,7 +77,7 @@ def init_after_req_hook(app: Flask) -> None:
             status_code = e.code
         else:
             g.logger.error(traceback.format_exc())
-            message = 'Unknown error'
+            message = 'Unknown error, please contact the system administrator'
             status_code = InternalServerError.code
         response = jsonify(dict(message=message))
         response.status_code = status_code
