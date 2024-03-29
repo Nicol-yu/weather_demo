@@ -1,0 +1,223 @@
+parameters:
+  - name: longitude
+    in: path
+    type: number
+    required: true
+  - name: latitude
+    in: path
+    type: number
+    required: true
+definitions:
+  Details:
+    type: object
+    properties:
+      current:
+        type: object
+        properties:
+          clouds:
+            type: integer
+          dew_point:
+            type: number
+            format: float
+          dt:
+            type: integer
+          feels_like:
+            type: number
+            format: float
+          humidity:
+            type: integer
+          pressure:
+            type: integer
+          sunrise:
+            type: integer
+          sunset:
+            type: integer
+          temp:
+            type: number
+            format: float
+          uvi:
+            type: number
+            format: float
+          visibility:
+            type: integer
+          weather:
+            type: array
+            items:
+              type: object
+              properties:
+                description:
+                  type: string
+                icon:
+                  type: string
+                main:
+                  type: string
+                id:
+                  type: integer
+          wind_deg:
+            type: integer
+          wind_speed:
+            type: number
+            format: float
+      daily:
+        type: array
+        items:
+          type: object
+          properties:
+            clouds:
+              type: integer
+            dew_point:
+              type: number
+              format: float
+            dt:
+              type: integer
+            humidity:
+              type: integer
+            moon_phase:
+              type: number
+              format: float
+            moonrise:
+              type: integer
+            moonset:
+              type: integer
+            pop:
+              type: integer
+            sunrise:
+              type: integer
+            sunset:
+              type: integer
+            uvi:
+              type: number
+              format: float
+            wind_deg:
+              type: integer
+            pressure:
+              type: integer
+            wind_gust:
+              type: number
+              format: float
+            wind_speed:
+              type: number
+              format: float
+            temp:
+              type: object
+              properties:
+                day:
+                  type: number
+                  format: float
+                eve:
+                  type: number
+                  format: float
+                max:
+                  type: number
+                  format: float
+                min:
+                  type: number
+                  format: float
+                morn:
+                  type: number
+                  format: float
+                night:
+                  type: number
+                  format: float
+            weather:
+              type: array
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  icon:
+                    type: string
+                  main:
+                    type: string
+                  id:
+                    type: integer
+            feels_like:
+              type: object
+              properties:
+                eve:
+                  type: integer
+                day:
+                  type: number
+                  format: float
+                morn:
+                  type: number
+                  format: float
+                night:
+                  type: number
+                  format: float
+      hourly:
+        type: array
+        items:
+          type: object
+          properties:
+            clouds:
+              type: integer
+            dew_point:
+              type: number
+              format: float
+            dt:
+              type: integer
+            feels_like:
+              type: number
+              format: float
+            humidity:
+              type: integer
+            pop:
+              type: integer
+            pressure:
+              type: integer
+            temp:
+              type: number
+              format: float
+            uvi:
+              type: number
+              format: float
+            visibility:
+              type: integer
+            wind_deg:
+              type: integer
+            wind_gust:
+              type: number
+              format: float
+            wind_speed:
+              type: number
+              format: float
+            weather:
+              type: array
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                  icon:
+                    type: string
+                  main:
+                    type: string
+                  id:
+                    type: integer
+      lat:
+        type: number
+        format: float
+      lon:
+        type: number
+        format: float
+      minutely:
+        type: array
+        items:
+          type: object
+          properties:
+            dt:
+              type: integer
+            precipitation:
+              type: integer
+      timezone:
+        type: string
+      timezone_offset:
+        type: integer
+
+responses:
+  200:
+    description: Get weather details
+    schema:
+      $ref: '#/definitions/Details'

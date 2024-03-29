@@ -1,0 +1,107 @@
+parameters:
+  - name: longitude
+    in: path
+    type: number
+    required: true
+  - name: latitude
+    in: path
+    type: number
+    required: true
+definitions:
+  Overview:
+    type: object
+    properties:
+      base:
+        type: string
+      clouds:
+        type: object
+        properties:
+          all:
+            type: integer
+      cod:
+        type: integer
+      coord:
+        type: object
+        properties:
+          lat:
+            type: number
+            format: float
+          lon:
+            type: number
+            format: float
+      dt:
+        type: integer
+      id:
+        type: integer
+      main:
+        type: object
+        properties:
+          feels_like:
+            type: number
+            format: float
+          grnd_level:
+            type: integer
+          humidity:
+            type: integer
+          pressure:
+            type: integer
+          sea_level:
+            type: integer
+          temp:
+            type: number
+            format: float
+          temp_max:
+            type: number
+            format: float
+          temp_min:
+            type: number
+            format: float
+      name:
+        type: string
+      sys:
+        type: object
+        properties:
+          country:
+            type: string
+          id:
+            type: integer
+          sunrise:
+            type: integer
+          sunset:
+            type: integer
+          type:
+            type: integer
+      timezone:
+        type: integer
+      visibility:
+        type: integer
+      weather:
+        type: array
+        items:
+          type: object
+          properties:
+            description:
+              type: string
+            icon:
+              type: string
+            id:
+              type: integer
+            main:
+              type: string
+      wind:
+        type: object
+        properties:
+          deg:
+            type: integer
+          gust:
+            type: number
+            format: float
+          speed:
+            type: number
+            format: float
+
+responses:
+  200:
+    description: Get weather overview
+    schema:
+      $ref: '#/definitions/Overview'

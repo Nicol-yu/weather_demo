@@ -1,0 +1,93 @@
+parameters:
+  - name: city_name
+    in: path
+    type: string
+    minLength: 0
+    maxLength: 32
+    required: true
+definitions:
+  cityList:
+    type: object
+    properties:
+      attribution:
+        type: string
+      type:
+        type: string
+      query:
+        type: array
+        items:
+          type: string
+      features:
+        type: array
+        items:
+          type: object
+          properties:
+            bbox:
+              type: array
+              items:
+                type: number
+                format: float
+            center:
+              type: array
+              items:
+                type: number
+                format: float
+            place_type:
+              type: array
+              items:
+                type: string
+
+            id:
+              type: string
+            matching_place_name:
+              type: string
+            matching_text:
+              type: string
+            place_name:
+              type: string
+            text:
+              type: string
+            type:
+              type: string
+            relevance:
+              type: number
+              format: float
+            context:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  mapbox_id:
+                    type: string
+                  short_code:
+                    type: string
+                  text:
+                    type: string
+                  wikidata:
+                    type: string
+            geometry:
+              type: object
+              properties:
+                type:
+                  type: string
+                coordinates:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+            properties:
+              type: object
+              properties:
+                mapbox_id:
+                  type: string
+                short_code:
+                  type: string
+                wikidata:
+                  type: string
+responses:
+  200:
+    description: A list of cities and locations
+    schema:
+      $ref: '#/definitions/cityList'
